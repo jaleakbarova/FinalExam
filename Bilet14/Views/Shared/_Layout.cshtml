@@ -1,0 +1,123 @@
+﻿@using Bilet14.Services
+@inject LayoutService service
+@{
+	var result = service.GetService();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Senkadagala</title>
+	<link rel="stylesheet" type="text/css" href="~/assets/css/bootstrap.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,400italic,500,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="~/assets/css/main.css">
+
+
+	<script type="text/javascript" src="~/assets/js/jquery.js"></script>
+	<script type="text/javascript" src="~/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="~/assets/js/singlepagenav.js"></script>
+	<script type="text/javascript" src="~/assets/js/queryloader.js"></script>
+	<script type="text/javascript" src="~/assets/js/main.js"></script>
+
+	<meta charset="UTF-8">
+	<meta name="description" content="Senkadagala - a simple HTML template">
+	<meta name="keywords" content="web design, web development, branding, Social media marketing, print media design, digital design, HTML,CSS,XML,JavaScript">
+	<meta name="author" content="PixelMock">
+
+	<link rel="icon" type="image/png" href="~/assets/img/fav.png" />
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top top-nav" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">
+					<img src="~/assets/img/@result["Logo"]" title="PixelMock Logo">
+				</a>
+			</div>
+			<div class="collapse navbar-collapse ">
+				<ul class="nav navbar-nav">
+					<li><a href="#home">Home</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#services">Services</a></li>
+					<li><a href="#work">Work</a></li>
+					<li><a href="#contact">Contact</a></li>
+
+					
+					<li><a asp-controller="Account" asp-action="Login">Login</a></li>
+
+					<li><a asp-controller="Account" asp-action="Register">Register</a></li>
+					<li><a asp-controller="Account" asp-action="SignOut">SignOut</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</div>
+
+
+	@RenderBody()
+
+	<div class="section section5 footer" id="contact">
+		<div class="container">
+			<div class="row">
+				<h3 id="contact-us-header">Contact Us</h3>
+			</div>
+			<div class="row">
+				<div class="col-md-5 contact-description">
+					<p>@result["Title"]</p>
+					<p>@result["Description"]</p>
+					<p>
+						<strong>
+							@result["Phone"]<br>
+							@result["Email"]
+						</strong>
+					</p>
+					<p class="sm-wrapper clearfix">
+						<a class="sm-container" @result["Twitter"] target="_blank"></a>
+						<a class="sm-container sm-facebook" @result["Facebook"] target="_blank"></a>
+						<a class="sm-container sm-linkedin" @result["LinkedIn"] target="_blank"></a>
+						<a class="sm-container sm-gplus" @result["Google"] rel="publisher" target="_blank"></a>
+						<a class="sm-container sm-skype" href="skype:pixelmock?userinfo"></a>
+						<div class="clear"></div>
+					</p>
+				</div>
+				<div class="col-md-offset-1 col-md-6">
+					<div id="mainErrorDisplay">
+					</div>
+					<form id="contact-form">
+						<div class="form-group">
+							<label for="name">Name *</label>
+							<input type="text" class="form-control" id="name">
+						</div>
+
+						<div class="form-group">
+							<label for="email">Email *</label>
+							<input type="text" class="form-control" id="email">
+						</div>
+
+						<div class="form-group">
+							<label for="phone">Phone Number (Optional) <small>Eg : +94771234569</small></label>
+							<input type="text" class="form-control" id="phone">
+						</div>
+
+						<div class="form-group">
+							<label for="message">Message *</label>
+							<textarea class="form-control" id="message"></textarea>
+						</div>
+
+						<div class="form-group">
+							<input type="submit" value="Send" id="send" class="btn btn-success">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	</div>
+</body>
+</html>
